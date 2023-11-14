@@ -1,5 +1,5 @@
 <template>
-  <div id="dynamic-state">
+  <div id="dynamic-state" style="width: 50%; display: inline-block">
     <svg width="200" height="200">
       <polygon :points="points"></polygon>
       <circle r="90" cx="100" cy="100"></circle>
