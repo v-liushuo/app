@@ -4,6 +4,9 @@ import FormEventExample from "@/components/FormEventExample.vue";
 import HelloWorld from "@/components/HelloWorld.vue";
 import GsapExample from "@/components/GreenSockExample.vue";
 import DynamicStateExample from "@/components/DynamicStateExample.vue";
+import DirectiveExample from "@/components/DirectiveExample.vue";
+import CSSExample from "@/components/CSSExample.vue";
+import CSSLearnExample from "@/components/CSSLeranExample.vue";
 
 Vue.use(VueRouter)
 
@@ -34,6 +37,21 @@ const routes = [
         path: '/dynamic',
         name: 'dynamic',
         component: DynamicStateExample
+    },
+    {
+        path: '/directive',
+        name: 'directive',
+        component: DirectiveExample
+    },
+    {
+        path: '/css',
+        name: 'css',
+        component: CSSExample
+    },
+    {
+        path: '/css-learn',
+        name: 'css-learn',
+        component: CSSLearnExample
     }
 ];
 const router = new VueRouter({
