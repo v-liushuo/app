@@ -19,10 +19,22 @@
       <li>Web: <a href="http://example.com">http://example.com</a></li>
       <li>Tel: 123 45678</li>
     </ul>
+    <p id="layer">layer </p>
   </div>
 </template>
 
 <style scoped>
+#layer {
+  color: red;
+}
+@layer layer {
+  #layer {
+    color: deeppink !important;
+    width: 50px;
+    margin: 0 auto;
+    border: 5px double green;
+  }
+}
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -31,7 +43,9 @@ h1 {
   color: #375e97;
   font-size: 2em;
   font-family: Georgia, 'Times New Roman', Times, serif;
-//border-bottom: 1px #375e97; border-bottom-width: 2px; border-bottom-style: double; border-bottom-color: rebeccapurple;
+  border-bottom-width: 4px;
+  border-bottom-style: double;
+  border-bottom-color: rebeccapurple;
 }
 
 h2 {
