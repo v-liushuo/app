@@ -7,7 +7,7 @@ import DynamicStateExample from "@/components/DynamicStateExample.vue";
 import DirectiveExample from "@/components/DirectiveExample.vue";
 import CSSExample from "@/components/CSSExample.vue";
 import CSSLearnExample from "@/components/CSSLeranExample.vue";
-
+import BoxLearnExample from "@/components/BoxLeranExample.vue"
 Vue.use(VueRouter)
 
 const routes = [
@@ -52,6 +52,11 @@ const routes = [
         path: '/css-learn',
         name: 'css-learn',
         component: CSSLearnExample
+    },
+    {
+        path: '/box-learn',
+        name: 'box-learn',
+        component: BoxLearnExample
     }
 ];
 const router = new VueRouter({

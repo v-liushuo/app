@@ -1,0 +1,10 @@
+@layer other-layer {
+    #layer {
+        color: darkgreen !important;
+    }
+}
+
+
+#layer {
+    color: blue !important;
+}

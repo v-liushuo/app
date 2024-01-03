@@ -20,21 +20,101 @@
       <li>Tel: 123 45678</li>
     </ul>
     <p id="layer">layer </p>
+    <p id="site">site </p>
+    <div class="inline-example">
+      <p>I am a paragraph. A short one.</p>
+      <ul>
+        <li>Item One</li>
+        <li>Item Two</li>
+        <li>Item Three</li>
+      </ul>
+      <p>I am another paragraph. Some of the <span class="block">words</span> have been wrapped in a
+        <span>span element</span>.</p>
+    </div>
   </div>
 </template>
 
 <style scoped>
-#layer {
-  color: red;
+.inline-example p,
+.inline-example ul {
+  border: 2px solid rebeccapurple;
+  padding: .5em;
 }
+
+.inline-example .block,
+.inline-example li {
+  border: 2px solid blue;
+  padding: .5em;
+}
+
+.inline-example ul {
+  display: inline-flex;
+  list-style: none;
+}
+
+.inline-example .block {
+  display: block;
+}
+
+@media (min-width: 50em) {
+@layer site ;
+}
+
+@layer page {
+  #site {
+    text-decoration: overline;
+    color: red;
+  }
+}
+
+@layer site {
+  #site {
+    text-decoration: underline;
+    color: green;
+  }
+}
+
+@layer other, layer, layer2;
+
+@import url("other.css") layer(other);
+@layer other {
+  #layer {
+    background-color: hotpink;
+  }
+}
+
+#layer {
+  color: red !important;
+}
+
+
+@layer layer2 {
+  #layer {
+    color: black !important;
+  }
+}
+
+@layer {
+  #layer {
+    color: #fb6542 !important;
+  }
+}
+
 @layer layer {
   #layer {
-    color: deeppink !important;
+    color: rebeccapurple !important;
     width: 50px;
     margin: 0 auto;
     border: 5px double green;
   }
 }
+
+@layer {
+  #layer {
+    border-bottom-style: solid;
+  }
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
