@@ -24,7 +24,7 @@
     <div class="border-ex">
       this is a border example
     </div>
-    <div class="text-fangxiang">
+    <div class="text-fanning">
       <h1>中文文字的方向并不影响阅读</h1>
       <h1>play with writing modes</h1>
     </div>
@@ -32,7 +32,7 @@
 </template>
 
 <style scoped>
-.text-fangxiang h1 {
+.text-fanning h1 {
   writing-mode: horizontal-tb;
 }
 .border-ex {
@@ -53,10 +53,7 @@
 
 .container {
   border: rebeccapurple solid 30px;
-  margin-top: 40px;
-  margin-right: 30px;
-  margin-bottom: 4em;
-  margin-left: -4em;
+  margin: 40px 30px 4em -4em;
 }
 
 .box {
