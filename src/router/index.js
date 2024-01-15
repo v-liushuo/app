@@ -8,6 +8,8 @@ import DirectiveExample from "@/components/DirectiveExample.vue";
 import CSSExample from "@/components/CSSExample.vue";
 import CSSLearnExample from "@/components/CSSLeranExample.vue";
 import BoxLearnExample from "@/components/BoxLeranExample.vue"
+import TableFormatterExample from "@/components/TableFormatterExample.vue"
+import CanvasExample from "@/components/CanvasExample.vue";
 Vue.use(VueRouter)
 
 const routes = [
@@ -57,6 +59,16 @@ const routes = [
         path: '/box-learn',
         name: 'box-learn',
         component: BoxLearnExample
+    },
+    {
+        path: '/table-formatter',
+        name: 'table-formatter',
+        component: TableFormatterExample
+    },
+    {
+        path: '/canvas-formatter',
+        name: 'canvas-formatter',
+        component: CanvasExample
     }
 ];
 const router = new VueRouter({
