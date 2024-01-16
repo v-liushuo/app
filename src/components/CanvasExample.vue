@@ -49,6 +49,22 @@ export default {
         return Math.floor(Math.random() * number);
       }
 
+      class Person {
+        name;
+
+        constructor(name) {
+          this.name = name
+        }
+
+        introduceSelf() {
+          console.log(`my name is ${this.name}`)
+        }
+      }
+
+      const  person = new Person('alice');
+      person.introduceSelf();
+
+
       function draw() {
         ctx.clearRect(0, 0, WIDTH, HEIGHT);
         for (var i = 0; i < 200; i++) {

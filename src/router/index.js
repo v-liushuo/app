@@ -10,6 +10,7 @@ import CSSLearnExample from "@/components/CSSLeranExample.vue";
 import BoxLearnExample from "@/components/BoxLeranExample.vue"
 import TableFormatterExample from "@/components/TableFormatterExample.vue"
 import CanvasExample from "@/components/CanvasExample.vue";
+import CanvasV2Example from "@/components/CanvasV2Example.vue";
 Vue.use(VueRouter)
 
 const routes = [
@@ -66,9 +67,14 @@ const routes = [
         component: TableFormatterExample
     },
     {
-        path: '/canvas-formatter',
-        name: 'canvas-formatter',
+        path: '/canvas-example',
+        name: 'canvas-example',
         component: CanvasExample
+    },
+    {
+        path: '/canvas-v2-example',
+        name: 'canvas-v2-example',
+        component: CanvasV2Example
     }
 ];
 const router = new VueRouter({
