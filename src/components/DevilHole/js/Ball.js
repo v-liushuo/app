@@ -10,6 +10,9 @@ class Ball extends Shape {
 }
 
 Ball.prototype.draw = function (ctx) {
+    if (!this.exists) {
+        return;
+    }
     ctx.beginPath();
     ctx.fillStyle = this.color;
     ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
@@ -17,6 +20,9 @@ Ball.prototype.draw = function (ctx) {
 }
 
 Ball.prototype.update = function (width, height) {
+    if (!this.exists) {
+        return;
+    }
     if (this.x + this.size >= width) {
         this.velX = -this.velX;
     }
@@ -39,8 +45,11 @@ Ball.prototype.update = function (width, height) {
 
 
 Ball.prototype.collisionDetect = function (balls) {
+    if (!this.exists) {
+        return;
+    }
     for (let j = 0; j < balls.length; j++) {
-        if (this !== balls[j]) {
+        if (this !== balls[j] && balls[j].exists) {
             const dx = this.x - balls[j].x;
             const dy = this.y - balls[j].y;
             const distance = Math.sqrt(dx * dx + dy * dy);
