@@ -1,7 +1,5 @@
 <template>
   <div>
-    <button>Update</button>
-
     <canvas></canvas>
   </div>
 </template>
@@ -10,38 +8,54 @@
 /*
  eslint-disable
  */
-import {random} from "gsap/gsap-core";
 import Ball from "@/js/Ball";
+import {random, randomColor} from "@/js/MyRandom";
 
 export default {
   mounted() {
-    this.startDisplay()
-    // this.changeText('123123')
+    const canvas = document.querySelector("canvas");
+    const ctx = canvas.getContext('2d');
+    this.width = (canvas.width = window.innerWidth);
+    this.height = (canvas.height = window.innerHeight);
+    this.createBalls();
+    this.loop(ctx)
+
   },
   data: function () {
     return {
       array: [],
-      textValue: ''
+      textValue: '',
+      width: 0,
+      height: 0,
+      balls: []
     }
   },
   methods: {
-    startDisplay: function () {
-      const canvas = document.querySelector("canvas");
-      const ctx = canvas.getContext('2d');
-      const width = (canvas.width = window.innerWidth);
-      const height = (canvas.height = window.innerHeight);
-      let testBall = new Ball(50, 100, 4, 4, 'blue', 10)
-      console.log(JSON.stringify(testBall))
-      testBall.draw(ctx)
+    createBalls: function () {
+      while (this.balls.length < 50) {
+        let size = random(10, 20);
+        let ball = new Ball(
+            random(0 + size, this.width - size),
+            random(0 + size, this.height - size),
+            random(-7, 7),
+            random(-7, 7),
+            randomColor(),
+            size
+        );
+        console.log(ball.x, ball.y)
+        this.balls.push(ball);
+      }
     },
-    random: function (min, max) {
-      return Math.floor(Math.random() * (max - min)) + min;
-    },
-    randomColor: function () {
-      return (
-          "rgb(" + random(0, 255) + ", " + random(0, 255) + "," + random(0, 255) + ")"
-      );
+    loop: function (ctx) {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
+      ctx.fillRect(0, 0, this.width, this.height);
 
+      for (let i = 0; i < this.balls.length; i++) {
+        this.balls[i].draw(ctx);
+        this.balls[i].collisionDetect(this.balls);
+        this.balls[i].update(this.width, this.height);
+      }
+      requestAnimationFrame(() => this.loop(ctx));
     }
   }
 }

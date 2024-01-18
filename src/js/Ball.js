@@ -1,3 +1,5 @@
+import {randomColor} from './MyRandom.js'
+
 class Ball {
     constructor(x, y, velX, velY, color, size) {
         this.x = x;
@@ -35,5 +37,20 @@ Ball.prototype.update = function (width, height) {
 
     this.x += this.velX;
     this.y += this.velY
+}
+
+
+Ball.prototype.collisionDetect = function (balls) {
+    for (let j = 0; j < balls.length; j++) {
+        if (this !== balls[j]) {
+            const dx = this.x - balls[j].x;
+            const dy = this.y - balls[j].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < this.size + balls[j].size) {
+                balls[j].color = this.color = randomColor();
+            }
+        }
+    }
 }
 export default Ball;
