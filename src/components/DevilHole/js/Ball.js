@@ -1,11 +1,9 @@
-import {randomColor} from '../../../util/MyRandom.js'
+import {randomColor} from '@/util/MyRandom.js'
+import Shape from "@/components/DevilHole/js/Shape";
 
-class Ball {
-    constructor(x, y, velX, velY, color, size) {
-        this.x = x;
-        this.y = y;
-        this.velX = velX;
-        this.velY = velY;
+class Ball extends Shape {
+    constructor(x, y, velX, velY, color, size, exists) {
+        super(x, y, velX, velY, exists);
         this.color = color
         this.size = size;
     }

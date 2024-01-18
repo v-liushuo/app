@@ -11,6 +11,7 @@ import BoxLearnExample from "@/components/BoxLeranExample.vue"
 import TableFormatterExample from "@/components/TableFormatterExample.vue"
 import CanvasExample from "@/components/CanvasExample.vue";
 import CanvasV2Example from "@/components/CanvasV2/CanvasV2Example.vue";
+import DevilHole from "@/components/DevilHole/DevilHole.vue";
 Vue.use(VueRouter)
 
 const routes = [
@@ -75,6 +76,11 @@ const routes = [
         path: '/canvas-v2-example',
         name: 'canvas-v2-example',
         component: CanvasV2Example
+    },
+    {
+        path: '/devil-hole',
+        name: 'devil-hole',
+        component: DevilHole
     }
 ];
 const router = new VueRouter({

@@ -8,10 +8,11 @@
 /*
  eslint-disable
  */
-import Ball from "@/components/CanvasV2/js/Ball";
+import Ball from "@/components/DevilHole/js/Ball";
 import {random, randomColor} from "@/util/MyRandom";
 
 export default {
+  name: "DevilHole",
   mounted() {
     const canvas = document.querySelector("canvas");
     const ctx = canvas.getContext('2d');
@@ -41,7 +42,8 @@ export default {
             random(-7, 7),
             random(-7, 7),
             randomColor(),
-            size
+            size,
+            true
         );
         console.log(ball.x, ball.y)
         this.balls.push(ball);
