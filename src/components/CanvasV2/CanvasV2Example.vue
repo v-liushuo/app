@@ -8,8 +8,8 @@
 /*
  eslint-disable
  */
-import Ball from "@/js/Ball";
-import {random, randomColor} from "@/js/MyRandom";
+import Ball from "@/components/CanvasV2/js/Ball";
+import {random, randomColor} from "@/components/CanvasV2/js/MyRandom";
 
 export default {
   mounted() {
@@ -18,6 +18,7 @@ export default {
     this.width = (canvas.width = window.innerWidth);
     this.height = (canvas.height = window.innerHeight);
     this.createBalls();
+    // setInterval(() => this.loop(ctx), 10)
     this.loop(ctx)
 
   },
@@ -47,7 +48,7 @@ export default {
       }
     },
     loop: function (ctx) {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
       ctx.fillRect(0, 0, this.width, this.height);
 
       for (let i = 0; i < this.balls.length; i++) {
