@@ -1,6 +1,7 @@
 <template>
   <div>
     <canvas></canvas>
+    <p>还剩{{ ballLeft }}个球</p>
   </div>
 </template>
 
@@ -10,6 +11,7 @@
  */
 import Ball from "@/components/DevilHole/js/Ball";
 import {random, randomColor} from "@/util/MyRandom";
+import DevilCircle from "@/components/DevilHole/js/DevilCircle";
 
 export default {
   name: "DevilHole",
@@ -19,8 +21,10 @@ export default {
     this.width = (canvas.width = window.innerWidth);
     this.height = (canvas.height = window.innerHeight);
     this.createBalls();
+    let devilCircle = new DevilCircle(50, 50, true);
+    devilCircle.setControls();
     // setInterval(() => this.loop(ctx), 10)
-    this.loop(ctx)
+    this.loop(ctx, devilCircle)
 
   },
   data: function () {
@@ -30,6 +34,11 @@ export default {
       width: 0,
       height: 0,
       balls: []
+    }
+  },
+  computed: {
+    ballLeft: function () {
+      return this.balls.filter(item => item.exists).length;
     }
   },
   methods: {
@@ -45,20 +54,22 @@ export default {
             size,
             true
         );
-        console.log(ball.x, ball.y)
         this.balls.push(ball);
       }
     },
-    loop: function (ctx) {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+    loop: function (ctx, devilCircle) {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.45)";
       ctx.fillRect(0, 0, this.width, this.height);
 
+      devilCircle.draw(ctx);
+      devilCircle.checkBounds(this.width, this.height);
       for (let i = 0; i < this.balls.length; i++) {
         this.balls[i].draw(ctx);
         this.balls[i].collisionDetect(this.balls);
         this.balls[i].update(this.width, this.height);
+        devilCircle.collisionDetect(this.balls[i]);
       }
-      requestAnimationFrame(() => this.loop(ctx));
+      requestAnimationFrame(() => this.loop(ctx, devilCircle));
     }
   }
 }
@@ -88,5 +99,13 @@ button {
 
 button:hover {
   background-color: #41b883;
+}
+
+p {
+  position: absolute;
+  margin: 0;
+  top: 35px;
+  right: 5px;
+  color: #aaa;
 }
 </style>

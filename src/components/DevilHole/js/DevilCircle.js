@@ -1,4 +1,3 @@
-import {randomColor} from '@/util/MyRandom.js'
 import Shape from "@/components/DevilHole/js/Shape";
 
 class DevilCircle extends Shape {
@@ -20,7 +19,7 @@ DevilCircle.prototype.draw = function (ctx) {
     ctx.stroke();
 }
 
-DevilCircle.prototype.update = function (width, height) {
+DevilCircle.prototype.checkBounds = function (width, height) {
     if (!this.exists) {
         return;
     }
@@ -60,19 +59,13 @@ DevilCircle.prototype.setControls = function () {
 }
 
 
-DevilCircle.prototype.collisionDetect = function (balls) {
-    for (let j = 0; j < balls.length; j++) {
-        if (!balls[j].exists) {
-            continue;
-        }
-        const dx = this.x - balls[j].x;
-        const dy = this.y - balls[j].y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
+DevilCircle.prototype.collisionDetect = function (ball) {
+    const dx = this.x - ball.x;
+    const dy = this.y - ball.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (distance < this.size + balls[j].size) {
-            balls.slice(j);
-            balls[j].exists = false;
-        }
+    if (distance < this.size + ball.size) {
+        ball.exists = false;
     }
 }
 export default DevilCircle;
