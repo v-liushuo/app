@@ -1,9 +1,13 @@
 import Vue from "vue";
 import VueRouter from 'vue-router';
+import HelloWorld from "@/components/HelloWorld.vue";
 
 Vue.use(VueRouter)
 
-const routes = [];
+const routes = [{
+    path: '/',
+    redirect: HelloWorld
+}];
 require.context("@/components", true, /\.vue$/)
     .keys()
     .map((item) => {

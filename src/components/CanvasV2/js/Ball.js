@@ -49,11 +49,6 @@ Ball.prototype.collisionDetect = function (balls) {
 
             if (distance < this.size + balls[j].size) {
                 balls[j].color = this.color = randomColor();
-
-                balls[j].velX = -balls[j].velX;
-                balls[j].velY = -balls[j].velY;
-                this.velX = -this.velX;
-                this.velY = -this.velY;
             }
         }
     }
