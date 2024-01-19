@@ -4,15 +4,14 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter)
 
 const routes = [];
-require
-    .context("../components", true, /\.vue$/)
+require.context("@/components", true, /\.vue$/)
     .keys()
     .map((item) => {
         let path = item.slice(1).replace(".vue", "");
         routes.push({
             path,
             name: path.slice(1),
-            component: () => import(`../components${item.slice(1)}`),
+            component: () => import(`@/components${item.slice(1)}`),
         });
     });
 
