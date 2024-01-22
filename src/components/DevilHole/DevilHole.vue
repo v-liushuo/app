@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     createBalls: function () {
-      while (this.balls.length < 50) {
+      while (this.balls.length < 100) {
         let size = random(10, 20);
         let ball = new Ball(
             random(0 + size, this.width - size),
