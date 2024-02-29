@@ -14,8 +14,8 @@ export default {
 
 <template>
   <div>
-    <CustomInput v-model="searchText"></CustomInput>
-    <p>{{ searchText }}</p>
+    <CustomInput :model-value="searchText" @update:modelValue="args => searchText = args"/>
+    <p>P: {{ searchText }}</p>
   </div>
 </template>
 

@@ -1,13 +1,22 @@
 <script>
 export default {
   name: "CustomInput",
-  props: ['modelValue']
+  props: ['modelValue'],
+  computed: {
+    value: {
+      get() {
+        return this.modelValue;
+      },
+      set(value) {
+        this.$emit('update:modelValue', value);
+      }
+    }
+  }
 }
 </script>
 
 <template>
-  <input :value="modelValue"
-         @input="$emit('update:modelValue',$event.target.value)">
+  <input v-model="value"/>
 </template>
 
 <style scoped>
